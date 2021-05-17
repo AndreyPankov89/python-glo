@@ -1,0 +1,7 @@
+print('What is your name?')
+name = input()
+print('What is your sername?')
+sername = input()
+print('What is your patronymic?')
+patronymic = input()
+print(name,patronymic,sername,sep='-')
