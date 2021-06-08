@@ -3,7 +3,8 @@ chr_9 = ord('9')
 
 character = ord(input('Введите символ: '))
 
-if (character >= chr_0 and character <= chr_9):
+if (character >= chr_0 and character <= chr_9):     #character.isdigit()
     print('YES')
 else:
     print('NO')
+
