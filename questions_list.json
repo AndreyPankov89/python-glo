@@ -1,0 +1,27 @@
+[
+    {
+        "py/object":"__main__.Question",
+        "_Question__question":"Сколько будет два плюс два умноженное на два?",
+        "_Question__answer":"6"
+    },
+    {
+        "py/object":"__main__.Question",
+        "_Question__question":"Бревно нужно рааспилить на 10 частей, сколько нужно распилов?",
+        "_Question__answer":"9"
+    },
+    {
+        "py/object":"__main__.Question",
+        "_Question__question":"На двух руках 10 пальшев, сколько пальцев на пяти рука?",
+        "_Question__answer":"25"
+    },
+    {
+        "py/object":"__main__.Question",
+        "_Question__question":"Укол делают каждые полчаса, сколько нужно минут для трех уколов?",
+        "_Question__answer":"60"
+    },
+    {
+        "py/object":"__main__.Question",
+        "_Question__question":"Пять свечей горело, две потухли, сколько осталось?",
+        "_Question__answer":"2"
+    }
+]
