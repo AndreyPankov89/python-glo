@@ -11,22 +11,21 @@ class File_IO:
 
     def write(self, value):
         file = open(self.filename,'w',encoding='utf-8')
-        file.write(jsonpickle.encode(value))
+        file.write(value)
         file.close()
     
     def read(self):
         file = open(self.filename, 'r', encoding='utf-8')
         lines = file.read()
-        print(type(lines))
         file.close()
-        return jsonpickle.decode(lines)
+        return lines
     
 
 class QuestionStorage:
     def __init__(self):
         self.file = File_IO('questions_list.json')
         if os.path.exists('questions_list.json'):
-            self.__questions_list = self.file.read()
+            self.__questions_list = jsonpickle.decode(self.file.read())
         else:
             self.__questions_list = [
                 Question('Сколько будет два плюс два умноженное на два?', '6'),
@@ -35,7 +34,7 @@ class QuestionStorage:
                 Question('Укол делают каждые полчаса, сколько нужно минут для трех уколов?', '60'),
                 Question('Пять свечей горело, две потухли, сколько осталось?', '2')
             ]
-            self.file.write(self.__questions_list)
+            self.file.write(jsonpickle.encode(self.__questions_list))
 
     def get_all(self):
         count = len(self.__questions_list)
@@ -57,7 +56,7 @@ class QuestionStorage:
             raise Exception('Ответ должен быть числом')
         new_question = Question(question,answer)
         self.__questions_list.append(new_question)
-        self.file.write(self.__questions_list)
+        self.file.write(jsonpickle.encode(self.__questions_list))
     
     def remove(self):
         for i in range(len(self.__questions_list)):
@@ -79,7 +78,7 @@ class QuestionStorage:
         confirm = input()
         if (confirm.lower() == 'y'):
             self.__questions_list.pop(user_answer-1)
-        self.file.write(self.__questions_list)
+        self.file.write(jsonpickle.encode(self.__questions_list))
 
 class Question:
     def __init__(self, question,answer):
@@ -127,14 +126,14 @@ class User:
 class UserResultStorage:
     def __init__(self):
         self.__file = File_IO('results.json')
-        self.__results = self.__file.read() if os.path.exists('results.json') else []
+        self.__results = jsonpickle.decode(self.__file.read()) if os.path.exists('results.json') else []
     @property
     def results(self):
         return self.__results
     
     def append(self,result):
         self.__results.append(result)
-        self.__file.write(self.__results)
+        self.__file.write(jsonpickle.encode(self.__results))
     
 def print_table(lines):
     
